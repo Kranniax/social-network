@@ -1,0 +1,29 @@
+{
+  "name": "social-network",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "About",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kranniax/social-network.git"
+  },
+  "author": "Kranniax",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Kranniax/social-network/issues"
+  },
+  "homepage": "https://github.com/Kranniax/social-network#readme",
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.19.1"
+  },
+   "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
