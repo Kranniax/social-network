@@ -76,11 +76,41 @@ const userController = {
       res.status(500).json({ error: error.message });
     }
   },
-  // add a new friend 
-  async createNewFriend (){},
-  // remove a friend 
-  async deleteNewFriend (){}
-  
+  // add a new friend
+  async createNewFriend({ params }, res) {
+    try {
+      const newFriend = await User.findOneAndUpdate(
+        { _id: params.userId },
+        { $push: { friends: params.friendId } },
+        { new: true, runValidators: true }
+      );
+      if (!newFriend) {
+        res.status(404).json({ message: "Cannot locate user with this id!" });
+        return;
+      }
+
+      res.json(newFriend);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
+  // remove a friend
+  async deleteNewFriend({ params }, res) {
+    try {
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: params.userId },
+        { $pull: { friends: params.friendId } },
+        { new: true }
+      );
+      if (!updatedUser) {
+        res.status(404).json({ message: "Cannot locate user with this id!" });
+        return;
+      }
+      res.json(updatedUser);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
 };
 
 export const {
@@ -89,4 +119,6 @@ export const {
   createUser,
   updateUser,
   deleteUser,
+  createNewFriend,
+  deleteNewFriend,
 } = userController;
