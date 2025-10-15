@@ -1,4 +1,4 @@
-import { User } from "../models/index.js";
+import { User, Thought } from "../models/index.js";
 
 const userController = {
   // get all users ,
@@ -13,7 +13,10 @@ const userController = {
   // get a single user
   async getSingleUser({ params }, res) {
     try {
-      const userData = await User.findById(params.id);
+      const userData = await User.findById(params.id)
+        .populate("thoughts")
+        .populate("friends")
+        .select("-__v"); // Optionally exclude version key
 
       if (!userData) {
         res.status(404).json({ message: "Cannot locate a user with this id!" });
@@ -62,11 +65,22 @@ const userController = {
         res.status(404).json({ message: "Cannot locate user with this id" });
         return;
       }
-      res.json({ message: "User has been deleted!" });
+      // Remove all thoughts associated with this user
+      await Thought.deleteMany({ username: deletedUser.username });
+
+      res.json({
+        message: "User and associated thoughts have been deleted!",
+        deletedUser,
+      });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
   },
+  // add a new friend 
+  async createNewFriend (){},
+  // remove a friend 
+  async deleteNewFriend (){}
+  
 };
 
 export const {
