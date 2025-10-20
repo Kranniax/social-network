@@ -21,9 +21,10 @@ router
   .put(updateThought)
   .delete(deleteThought);
 
-// create a reaction | delete a reaction
+// create a reaction 
 router.route("/:thoughtId/reactions").post(createReaction);
 
+// delete a reaction
 router.route("/:thoughtId/reactions/:reactionId").delete(deleteReaction);
 
 export default router;

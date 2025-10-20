@@ -118,7 +118,7 @@ const thoughtController = {
   async deleteReaction({ params }, res) {
     try {
       const updatedThought = await Thought.findByIdAndUpdate(
-        params.id,
+        params.thoughtId,
         { $pull: { reactions: { reactionId: params.reactionId } } },
         { new: true, runValidators: true }
       );

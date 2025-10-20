@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Types } from "mongoose";
 
 const userSchema = new Schema(
   {
@@ -17,7 +17,7 @@ const userSchema = new Schema(
     thoughts: [
       {
         // This specifies that each element in the array is an ObjectId
-        type: Schema.Types.ObjectId,
+        type: Types.ObjectId,
         // The 'ref' property tells Mongoose that the IDs refer to the 'Thought' model
         ref: "Thought",
       },
@@ -25,7 +25,7 @@ const userSchema = new Schema(
     friends: [
       {
         // This specifies that each element in the array is an ObjectId
-        type: Schema.Types.ObjectId,
+        type: Types.ObjectId,
         // The 'ref' property tells Mongoose that the IDs refer to the 'User' model
         ref: "User",
       },
