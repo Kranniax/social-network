@@ -35,6 +35,8 @@ A backend API for a social network web application where users can share their t
 
 Use an API client like Insomnia or Postman to test the API endpoints for users, thoughts, reactions, and friends.
 
+![Social Network](./assets/images/profile%20pic.jpg)
+
 ### API Routes
 
 - **Users:** Create, read, update, delete users; add/remove friends
