@@ -37,6 +37,10 @@ Use an API client like Insomnia or Postman to test the API endpoints for users, 
 
 ![Social Network](./assets/images/profile%20pic.jpg)
 
+## Video Demonstration
+
+### [Video Demonstration Link](https://drive.google.com/file/d/1wE_nevhQgqhy11bjGxAm_JQ1VQ2V9Ugj/view?usp=sharing)
+
 ### API Routes
 
 - **Users:** Create, read, update, delete users; add/remove friends
